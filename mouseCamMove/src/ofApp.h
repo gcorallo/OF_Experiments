@@ -28,6 +28,7 @@ class ofApp : public ofBaseApp{
     ofEasyCam cam;
     
     ofVec2f pos;
+    ofVec2f vel;
     ofVec2f mousePos;
     ofVec2f lastMousePos;
     
@@ -42,5 +43,8 @@ class ofApp : public ofBaseApp{
     vector <Point> points;
     
     bool doDraw;
+    
+    int ww;
+    int hh;
     
 };
