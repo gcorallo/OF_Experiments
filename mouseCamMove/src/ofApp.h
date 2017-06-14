@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Ambient.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -22,9 +23,24 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
     
-    ofVec2f camOffset;
+    ofVec3f camOffset;
     
     ofEasyCam cam;
     
+    ofVec2f pos;
+    ofVec2f mousePos;
+    ofVec2f lastMousePos;
+    
+    Ambient ambient;
+    
+    struct Point{
+        ofVec3f pos;
+        float life;
+        float age;
+    };
+    
+    vector <Point> points;
+    
+    bool doDraw;
     
 };
