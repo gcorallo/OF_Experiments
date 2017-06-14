@@ -10,13 +10,15 @@
 
 void Ambient::setup(){
     
-    int initParts = 2000;
+    int initParts = 4000;
+    limit = 2000;
+
     for(int i=0; i<initParts; i++){
         
         
         
         ofVec3f temp;
-        temp = ofVec3f(ofRandom(-800,800),ofRandom(-800,800),ofRandom(-800,800));
+        temp = ofVec3f(ofRandom(-limit,limit),ofRandom(-limit,limit),ofRandom(-limit,limit));
         parts.push_back(temp);
         mesh.addVertex(temp);
         
@@ -32,28 +34,28 @@ void Ambient::update(ofVec3f linearPos){
     mesh.clear();
     
     for(int i=0; i<parts.size(); i++){
-        if(parts[i].x < linearPos.x-800){
-            parts[i].x =linearPos.x+800;
+        if(parts[i].x < linearPos.x-limit){
+            parts[i].x =linearPos.x+limit;
         }
-        if(parts[i].x > linearPos.x+800){
-            parts[i].x =linearPos.x-800;
-        }
-        
-        if(parts[i].y < linearPos.y-800){
-            parts[i].y =linearPos.y+800;
-        }
-        if(parts[i].y < linearPos.y-800){
-            parts[i].y =linearPos.y+800;
-        }
-        if(parts[i].y > linearPos.y+800){
-            parts[i].y =linearPos.y-800;
+        if(parts[i].x > linearPos.x+limit){
+            parts[i].x =linearPos.x-limit;
         }
         
-        if(parts[i].z < linearPos.z-800){
-            parts[i].z =linearPos.z+800;
+        if(parts[i].y < linearPos.y-limit){
+            parts[i].y =linearPos.y+limit;
         }
-        if(parts[i].z > linearPos.z+800){
-            parts[i].z =linearPos.z-800;
+        if(parts[i].y < linearPos.y-limit){
+            parts[i].y =linearPos.y+limit;
+        }
+        if(parts[i].y > linearPos.y+limit){
+            parts[i].y =linearPos.y-limit;
+        }
+        
+        if(parts[i].z < linearPos.z-limit){
+            parts[i].z =linearPos.z+limit;
+        }
+        if(parts[i].z > linearPos.z+limit){
+            parts[i].z =linearPos.z-limit;
         }
         
     }

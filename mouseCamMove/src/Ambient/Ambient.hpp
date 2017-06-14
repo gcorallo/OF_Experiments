@@ -29,6 +29,8 @@ public:
     
     vector <ofVec3f> parts;
     
+    float limit;
+    
     ofMesh mesh;
     
 };

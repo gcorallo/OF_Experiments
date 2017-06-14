@@ -7,21 +7,17 @@ void ofApp::setup(){
     ambient.setup();
     
     camOffset = ofVec3f(0,0,0);
-   cam.disableMouseInput();
+    cam.disableMouseInput();
 
     doDraw=false;
    
-
+    cam.setDistance(651);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    cout<<points.size()<<endl;
+    
     for(int i = points.size()-1; i>=0; i--){
-        
-        if(i==1){
-            cout<<"life: "<<points[i].life<< "  age: "<<points[i].age<<endl;
-        }
         if(points[i].life<=0){
             points.erase(points.begin()+i);
         }
@@ -33,20 +29,28 @@ void ofApp::update(){
     
     
     if(points.size()>0){
-    camOffset.set(points[points.size()-1].pos);
+        camOffset+=(points[points.size()-1].pos-camOffset)*1.0;
         ambient.update(camOffset);
     }
     
     
-    if(doDraw){
+    //if(doDraw){
+        
+        pos += mousePos;
+        
         Point temp;
-        temp.pos = ofVec2f(ofGetMouseX(), -ofGetMouseY());
+        //temp.pos = ofVec2f(ofGetMouseX(), -ofGetMouseY());
+        temp.pos.set(pos);
         temp.life = 10.f;
         temp.age = .1f;
         points.push_back(temp);
         
         doDraw= false;
-    }
+        lastMousePos.set(mousePos);
+    //}
+    
+    
+    //cout<< cam.getDistance()<<endl;
 }
 
 //--------------------------------------------------------------
@@ -103,6 +107,7 @@ void ofApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
     doDraw= true;
+    mousePos = ofVec2f(x-ofGetWindowWidth()/2,-(y-ofGetWindowHeight()/2))*.1;
 
 }
 
@@ -110,6 +115,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 void ofApp::mousePressed(int x, int y, int button){
 
     doDraw= true;
+    mousePos = ofVec2f(x-ofGetWindowWidth()/2,-(y-ofGetWindowHeight()/2))*.1;
 }
 
 //--------------------------------------------------------------
