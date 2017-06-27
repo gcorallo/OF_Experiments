@@ -42,13 +42,10 @@ class ofApp : public ofBaseApp{
     
     bool clearFbo;
     
-    //PartSys psys;
     
     float deltaT;
     float delay;
     
-    vector <ofVec2f> debugLine;
-    int maxLength;
     
     float rc;
     float gc;

@@ -36,7 +36,6 @@ void ofApp::setup(){
     delay = 1000;
     deltaT = ofGetElapsedTimeMillis();
     
-    maxLength = 2000;
     
     bc=ofRandom(100,200);
     gc=ofRandom(100,200);
@@ -49,7 +48,6 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    //psys.update();
     
     if(ofGetElapsedTimeMillis()- deltaT>delay){
         if(nPasses<20){
@@ -58,7 +56,6 @@ void ofApp::update(){
         }
         else{
             nPasses=2;
-            //clearFbo=true;
         }
         deltaT = ofGetElapsedTimeMillis();
     
@@ -166,38 +163,10 @@ void ofApp::draw(){
         
         ofSetColor(rc,gc,bc);
         ofDrawEllipse( nuevapos, 20, 20);
-        /*
-        ofVec3f t= ofVec2f(nuevapos.x, nuevapos.y);
-        
-        if(debugLine.size()<maxLength){
-        debugLine.push_back(t);
-        }
-        */
-        
-        /*
-         ofVec3f addPos = ofVec3f(nuevapos.x, nuevapos.y, ofRandom(-150,150));
-         psys.addPart(addPos);
-        */
-        
-        
-        
+    
         
     }
     
-    //psys.draw();
-    
-    /*
-    for(int i=0; i<debugLine.size(); i++){
-        
-        ofSetLineWidth(4);
-        ofSetColor(255);
-        
-        if(i>0){
-            ofDrawLine(debugLine[i], debugLine[i-1]);
-        }
-        
-    }
-    */
     
     fbo.end();
     
@@ -246,7 +215,6 @@ void ofApp::keyPressed(int key){
     }
     else if(key == 'c'){
         clearFbo = true;
-        debugLine.clear();
         nPasses = 2;
     }
     
