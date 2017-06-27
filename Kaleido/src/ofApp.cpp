@@ -231,16 +231,12 @@ void ofApp::draw(){
     
     ofSetColor(255);
     
-    //fbo.draw(0,0,ww*.25, hh*.25);
     
     gui.draw();
     
     
   
-    
-    
-    //ofDrawBitmapStringHighlight("x: " + ofToString(dx) + " y: "+ ofToString(dy) , mouseX, mouseY, ofColor::white, ofColor::red);
-    
+     
 }
 
 //--------------------------------------------------------------

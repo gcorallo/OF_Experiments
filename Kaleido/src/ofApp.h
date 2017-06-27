@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "PartSys.h"
 
 class ofApp : public ofBaseApp{
 
@@ -43,7 +42,7 @@ class ofApp : public ofBaseApp{
     
     bool clearFbo;
     
-    PartSys psys;
+    //PartSys psys;
     
     float deltaT;
     float delay;
