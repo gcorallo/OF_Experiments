@@ -11,7 +11,6 @@ void ofApp::setup(){
     fbo.allocate(ww, hh, GL_RGB);
     fbo2.allocate(ww, hh, GL_RGB);
     
-    bkg.load("img3.jpeg");
     
     fbo.begin();
     
@@ -31,7 +30,7 @@ void ofApp::setup(){
     doDraw = false;
     doShader = true;
     
-       
+    
     delay = 1000;
     deltaT = ofGetElapsedTimeMillis();
     
@@ -42,22 +41,25 @@ void ofApp::setup(){
     rVel = 1.;
     gVel = 1.;
     bVel = 1.;
+    
+    demoMode = false;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    
-    if(ofGetElapsedTimeMillis()- deltaT>delay){
-        if(nPasses<20){
-            nPasses= nPasses+1;
+    if(demoMode){
+        if(ofGetElapsedTimeMillis()- deltaT>delay){
+            if(nPasses<20){
+                nPasses= nPasses+1;
+                
+            }
+            else{
+                nPasses=2;
+            }
+            deltaT = ofGetElapsedTimeMillis();
             
         }
-        else{
-            nPasses=2;
-        }
-        deltaT = ofGetElapsedTimeMillis();
-    
     }
     rc+=rVel;
     gc+=gVel;
@@ -117,9 +119,7 @@ void ofApp::draw(){
         if(int(a) % 2==0){
             if(mpos.y>hh/2){
                 
-                
                 a = a-(long)a;
-                
                 
             }
             
@@ -127,10 +127,7 @@ void ofApp::draw(){
                 
                 a =  (-a-long(-a));
                 
-                
-                
             }
-            
         }
         else{
             if(mpos.y>hh/2){
@@ -138,9 +135,7 @@ void ofApp::draw(){
                 a = 1-(a-long(a));
                 
             }
-            
             else{
-                
                 
                 a = 1-  (-a-long(-a));
                 
@@ -155,14 +150,14 @@ void ofApp::draw(){
         
         
         
-      
+        
         doDraw = false;
         
         nuevapos *= res.x;
         
         ofSetColor(rc,gc,bc);
         ofDrawEllipse( nuevapos, 20, 20);
-    
+        
         
     }
     
@@ -203,7 +198,7 @@ void ofApp::draw(){
     gui.draw();
     
     
-  
+    
     
 }
 
@@ -214,7 +209,10 @@ void ofApp::keyPressed(int key){
     }
     else if(key == 'c'){
         clearFbo = true;
-        nPasses = 2;
+    }
+    else if(key == 'd'){
+        demoMode = !demoMode;
+        if(demoMode) deltaT = ofGetElapsedTimeMillis();
     }
     
 }
