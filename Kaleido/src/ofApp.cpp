@@ -17,7 +17,6 @@ void ofApp::setup(){
     
     
     ofClear(0);
-    //bkg.draw(0,0);
     fbo.end();
     
     fbo2.begin();
