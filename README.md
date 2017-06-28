@@ -2,7 +2,11 @@
 Experiments in Openframeworks, WIP
 
 
+MouseCamMove.
+2d cam effect.
+
+
 Kaleido.
 demo Kaleidoscope,
-some code from https://www.shadertoy.com/view/Xs23zm
+relevant code from: https://www.shadertoy.com/view/Xs23zm
 
