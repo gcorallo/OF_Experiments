@@ -4,7 +4,7 @@ Experiments in Openframeworks, WIP
 
 #### MouseCamMove.
 2d cam effect.
-
+![alt text](https://media.giphy.com/media/3oKIPxcYyZwaEkLyWA/giphy.gif "mouse gif")
 
 #### Kaleido.
 demo Kaleidoscope,
